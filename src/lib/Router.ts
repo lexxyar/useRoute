@@ -48,9 +48,8 @@ export default class Router {
     }
 
     public findByName(name: string): Route | undefined {
-
         const res = this.__routes.find((e: Route) => e.name === name)
-        console.log(`useRoute::findByName(${name}): ${res}`)
+        // console.log(`useRoute::findByName(${name}): ${res}`)
         return res
     }
 }
