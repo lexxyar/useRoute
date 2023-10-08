@@ -1,0 +1,35 @@
+{
+  "name": "@lexxsoft/useroute",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "watch": "npx tsc -w",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version release",
+    "test": "npm run build && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexxyar/useRoute.git"
+  },
+  "keywords": [
+    "laravel",
+    "vue",
+    "route",
+    "typescript",
+    "javascript"
+  ],
+  "author": "Aleksey Komov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lexxyar/useRoute/issues"
+  },
+  "homepage": "https://github.com/lexxyar/useRoute#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
