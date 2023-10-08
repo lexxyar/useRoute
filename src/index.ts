@@ -4,9 +4,10 @@ import RoutConfig from "./lib/RoutConfig";
 // import route from "./lib/functions";
 
 export const route = function (name: string): string {
-    Router.fetch()
-    const rt: Route | undefined = Router.findByName(name)
-    console.log('route', name, rt, Route)
+    const r:Router=Router.getInstance()
+    r.fetch()
+    const rt: Route | undefined = r.findByName(name)
+    console.log('route', name, rt, r)
     return rt ? rt.url : '#'
 }
 
