@@ -29,21 +29,41 @@ export default class Router {
         Router.__instance = this
     }
 
-    public fetch(force: boolean = false): void {
+    public fetch(force: boolean = false) {
 
         if (!force && this.__fetched) return;
 
+        const cacheKey: string = 'up-routes-cache'
+
+        const cachedData: string | null = sessionStorage.getItem(cacheKey)
+        if (cachedData !== null) {
+            this.__routes = JSON.parse(cachedData)
+            this.__fetched = true
+        }
+
         let url: string = (new URL(location.href)).origin + this.__config.fetchUrl
+
+        // const response:Response = await fetch(url, {
+        //     method:this.__config.fetchMethod
+        // })
+        // const data: any = await response.json()
 
         const request: XMLHttpRequest = new XMLHttpRequest()
         request.open(this.__config.fetchMethod, url, false)
         request.send(null)
         const data: any[] = JSON.parse(request.response)
+
         this.__routes = []
         data.map((row: any) => {
             const r: Route = new Route(row)
             this.__routes.push(r)
         })
+
+        // const cache = await caches.open('up-route')
+        // await cache.put(url, data)
+
+        sessionStorage.setItem(cacheKey, JSON.stringify(this.__routes))
+
         this.__fetched = true
     }
 
